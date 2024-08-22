@@ -36,7 +36,7 @@
     flex-grow: 1;
 }
 
-.number-buttons {
+.calculator-buttons {
     flex-grow: 1;
     margin: 10px;
     align-content: center;
@@ -44,6 +44,10 @@
     background-color: #333333;
     text-align: center;
     vertical-align: middle;
+}
+
+.number-buttons {
+
 }
 
 .operation-buttons {
