@@ -1,18 +1,66 @@
-
+let firstNum, secondNum, operator;
 let calcScreen = document.getElementById("calculator-screen");
 let numButtons = document.getElementsByClassName("number-buttons");
+let operationButtons = document.getElementsByClassName("operation-buttons");
+let resetButton = document.getElementById("reset-button");
+
 console.log(numButtons);
 
-function test() {
-    var attribute = this.innerText;
-    calcScreen.innerText = attribute;
-    console.log(attribute)
+function setNum() {
+    let number = this.innerText;
+    console.log(number)
+
+    if (!operator){
+        if (!firstNum) {
+            number = parseInt(number);
+            if(isNaN(number)) {
+                firstNum = 0;
+                calcScreen.innerText = 0;
+            } else {
+                firstNum = number;
+                calcScreen.innerText = number;
+            }
+        } else {
+            number = parseInt(`${firstNum}${number}`);
+            if(isNaN(number)) {
+                firstNum = 0;
+                calcScreen.innerText = 0;
+            } else {
+                firstNum = number;
+                calcScreen.innerText = number;
+            }
+        }
+    
+    } else {
+        secondNum = parseInt(number);
+        calcScreen.innerText = operate(firstNum, operator, secondNum);
+        firstNum = parseInt(calcScreen.innerText);
+        operator = null;
+    }
 };
 
 for(let i = 0; i < numButtons.length; i++) {
-    numButtons[i].addEventListener("click", test);
+    numButtons[i].addEventListener("click", setNum);
 }
 
+function setOperator() {
+    if (firstNum) {
+        operator = this.innerText;
+    }
+};
+
+for(let i = 0; i < operationButtons.length; i++) {
+    operationButtons[i].addEventListener("click", setOperator);
+}
+
+function resetCalculator() {
+    firstNum = 0;
+    operator = null;
+    secondNum = 0;
+    calcScreen.innerText = 0;
+};
+
+resetButton.addEventListener("click", resetCalculator);
 
 function operate(firstNum, operator, secondNum) {
     switch(operator) {

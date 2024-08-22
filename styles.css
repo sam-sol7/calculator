@@ -28,7 +28,6 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    /* height: 90%; */
 }
 
 .number-rows {
@@ -46,6 +45,10 @@
     vertical-align: middle;
 }
 
+.calculator-buttons:active {
+    background-color: black;
+}
+
 .number-buttons {
 
 }
@@ -53,3 +56,4 @@
 .operation-buttons {
     background-color: #F0A33B;
 }
+
